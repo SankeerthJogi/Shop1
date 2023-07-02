@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Login Page</title>
+    <style>
+        .center
+        {
+            margin: 0px auto 0px;
+            width: 360px;
+        }
+        .input1
+        {
+            
+            margin: 10px auto 0px;
+            padding-left: 2px;
+            padding-right: 2px;
+            width: 300px;
+            position: relative;
+            display: block;
+            box-sizing: content-box;
+           
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div>Login Page</div>
+        <div style="background-color: blue;">
+            <form id="form1" method="post" enctype="multipart/form-data">
+                <div>
+        
+                    <input class="input1" id="username" type="text" name="username" placeholder="username">
+                </div>
+                <div>
+                    
+                    <input class="input1" id="password" type="text" name="password" placeholder="password">
+                </div>
+                <div>
+                    <button class="input1" name="submit" onclick="login()">log in</button>
+                </div>
+            </form>  
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+    <div class="center"><div>l</div></div>
+    <div id="result">div tag</div>
+    <p><a href="/signup">create an account</a></p>
+    <script>
+        document.getElementById("result").innerHTML="DIV TAG";
+        async function login()
+        {
+            document.getElementById("result").innerHTML="DIV TAG10";
+            var options= { "name" : "div"};
+            
+            var data = new FormData(document.getElementById("form1"));
+            
+             var res= await fetch("http://localhost:3000/logindemo",{ method: "POST", headers:{'Content-Type': 'application/json; charset=UTF-8', 'Content-Type': "application/x-www-form-urlencoded" }, body: JSON.stringify(options) });
+            var res1= await res.json();
+            document.getElementById("result").innerHTML=res1;
+            for(var i of data.entries())
+            {  
+                
+                document.getElementById("result").innerHTML+= " "+JSON.stringify(i);
+            }
+           
+
+        }
+    </script>
+</body>
+
+
+
+
+
+
+</html>

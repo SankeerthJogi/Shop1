@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Account</title>
+    <style>
+        a
+        {
+            text-decoration: none;
+        }
+        .link
+        {
+            display: block;
+            padding: 10px;
+        }
+        .link:hover
+        {
+            background-color: whitesmoke;
+        }
+        .username
+        {
+            display: inline-block;
+            margin: 10px;
+        }
+        .div2
+        { 
+            background-color: white;
+            display: none;
+            position: absolute;
+        }
+        .username:hover .div2
+        {
+            display: block;
+        }
+        .s { display: inline-block; }
+        .s1 { margin: 10px; }
+        .s2 { height: 30px; }
+        .s3 { padding: 10px } 
+        .s5 { margin: 1px; } 
+        .s6 { background-color: blue; } 
+        .s7 { width: 100%; } 
+        .s8 { background-color:lightsteelblue; } 
+        .s9 { background-color: white; } 
+        .s10 { display:inline-flex; } 
+        .s11 { width: 10%; } 
+        .s12 { width: 40%; } 
+        .s13 { width: 360px; } 
+        .s14 { width: 1%; } 
+        .s15 { width: 240px; } 
+        .s16 { height: 100px; width: 100px; }
+    </style>
+</head>
+<body>
+    <div class="s10 s7 s6">
+        <div class="s s11"></div>
+        <div class="s s1 s2">Company</div>
+        <div class="s s1">
+            <form class="s10" id="form1" action="/account" method="post">
+                <input class="s2 s13" id="search" type="search" name="search" placeholder="search the products" value=<%= bool1 %>>
+                <button class="s2" type="submit" name="submit">search</button>
+            </form> 
+        </div>
+        <div class="s s14"></div>
+        <div class="username">
+            <button class="s2" type="button" id="username" name="username" form="form1"> <%= name %> </button>
+            <div class="div2">
+                <a class="link" href="/savedproducts">Saved Products</a>
+                <a class="link" href="/orders">Orders</a>
+            </div>
+        </div>
+    </div>
+    <div class="s10 s8 s7">
+        <div class="s1">
+            <div class="s s15">
+                <form action="/account" method="post">
+                    <div class="s9 s5 s3">
+                        <div>Filters</div>
+                    </div>
+                    <div class="s9 s5 s3">
+                        <div>Company</div>
+                        <div>
+                            <input id="a" type="checkbox" name="company_a" placeholder="search the products" value="A" >
+                            <label for="a">A</label>
+                        </div>
+                        <div>
+                            <input id="b" type="checkbox" name="company_b" placeholder="search the products" value="B" >
+                            <label for="b">B</label>
+                        </div>
+                    </div>
+                    <div class="s9 s5 s3">
+                        <div>Sort</div>
+                        <div>
+                            <input id="low" type="radio" name="sort1" placeholder="search the products" value="low" >
+                            <label for="low">low to high</label>
+                        </div>
+                        <div>
+                            <input id="high" type="radio" name="sort1" placeholder="search the products" value="high" >
+                            <label for="high">high to low</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <button class="s7" type="submit" name="submit">search</button>
+                        </div>
+                    </div>
+                </form>  
+            </div>
+        </div>
+        <div class="s1 s7">
+            <div>
+                
+                <div id="div1">
+                    <% var i,l1=l.length; %>
+                    <% for(i=0;i<l1;i++) { %>
+                        <div class="s9 s5 s3 ">
+                            <a href="/<%= l[i].product %>/<%= (l[i]._id).toString() %>" target="_blank">
+                                <div class="s6 s16"></div>
+                                <div><%= l[i].product %></div>
+                                <div>Rs.<%= l[i].cost %></div>
+                            </a>
+                        </div>
+                        <% } %>
+                        <% if(l1==0) { %>
+                            <div><%= bool1 %> not found</div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.getElementById("a").checked=("<%= a %>" != "");
+                document.getElementById("b").checked=("<%= b %>" != "");
+                document.getElementById("low").checked=("<%= c2 %>" == "low");
+                document.getElementById("high").checked=("<%= c2 %>" == "high");
+                /*for(i=0;i<l;i++)
+                {
+                }*/
+                //var div2 = document.createElement("div");
+                //div2.innerHTML=l;
+                //var r = document.getElementById("div1");
+                //r.appendChild(div2);
+                //r.innerHTML=r1;
+                
+            </script>
+        </body>
+        </html>
+        
+        
+        
+        

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Account</title>
+    <style>
+        .link
+        {
+            display: block;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .link:hover
+        {
+            background-color: whitesmoke;
+        }
+        .username
+        {
+            display: inline-block;
+            
+        }
+        .div2
+        { 
+            background-color: white;
+            display: none;
+            position: absolute;
+
+        }
+        .username:hover .div2 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: blue;">
+        <div style="display: inline-block; width: 150px;"></div>
+        <div style="display: inline-block; margin: 10px 10px 10px 10px;">Company</div>
+        <div style="display: inline-block; margin: 10px 10px 10px 10px;">
+            <form id="form1" action="/account" method="post">
+                <input style="height: 30px; width: 360px;" id="search" type="search" name="search" placeholder="search the products">
+                <button style="height: 30px;" type="submit" name="submit">search</button>
+            </form> 
+        </div>
+        <div style="display: inline-block; width: 150px;"></div>
+        <div class="username">
+            <button style="height: 30px;" type="button" id="username" name="username" form="form1"> <%= name %> </button>
+            <div class="div2">
+                <a class="link" href="/savedproducts">Saved Products</a>
+                <a class="link" href="/orders">Orders</a>
+            </div>
+        </div>
+    </div>
+     
+    <p> <%= l %> </p>
+    <div id="div1">
+        <% var i,l1=l.length; %>
+        <% for(i=0;i<l1;i++) { %>
+        <div style="display: inline-block; width: 6%;">
+            <a href="/<%= l[i].product %>/<%= (l[i]._id).toString() %>" target="_blank">
+                <div style="background-color: blue; height: 100px;"></div>
+                <div><%= l[i].product %></div>
+                <div>Rs.<%= l[i].cost %></div>
+            </a>
+        </div>
+        <% } %>
+        <% if(l1==0) { %>
+          <div>You didnot saved any products</div>
+        <% } %>
+        
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>
+
+
+
+

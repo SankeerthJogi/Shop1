@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Signup Page</title>
+    <style>
+        a
+        {
+            text-decoration: none;
+        }
+        .center
+        {
+            margin: 0px auto 0px;
+            width: 360px;
+            background-color:lightsteelblue;
+            border: 2px solid blue;
+        }
+        .input1 , #e
+        {
+            margin: 10px auto 0px;
+            padding-left: 2px;
+            padding-right: 2px;
+            height: 30px;
+            width: 300px;
+            display: block;
+            box-sizing: content-box;
+        }
+        #e{ color: red; height: auto;}
+    </style>
+</head>
+<body>
+    <div class="center">
+        <div class="input1">Signup Page</div>
+        <div style="overflow: auto;">
+            <form action="/signup" method="post">
+                <div>
+                    <input class="input1" id="username" type="email" name="username" placeholder="username" required>
+                </div>
+                <div> 
+                    <input class="input1" id="password" type="password" name="password" placeholder="password" required>
+                </div>
+                <% if(e!="") { %>
+                <div>
+                    <div id="e"><%= e %></div>
+                </div>
+                <% } %>
+                <div>
+                    <button class="input1" type="submit" name="submit">Signup</button>
+                </div>
+            </form>  
+            
+            <button style="margin-bottom: 10px;" class="input1">
+                <a href="/login">Already have an account</a>
+            </button>
+
+
+
+
+
+        </div>
+    </div>
+</body>
+
+
+
+
+</html>

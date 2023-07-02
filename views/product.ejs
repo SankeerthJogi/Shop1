@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Product</title>
+    <style>
+        a
+        {
+            text-decoration: none;
+        }
+        .link
+        {
+            display: block;
+            padding: 10px;
+        }
+        .link:hover
+        {
+            background-color: whitesmoke;
+        }
+        .username
+        {
+            display: inline-block;
+            margin: 10px;
+        }
+        .div2
+        { 
+            background-color: white;
+            display: none;
+            position: absolute;
+        }
+        .username:hover .div2
+        {
+            display: block;
+        }
+        table{ border-collapse: collapse;}
+        .s { display: inline-block; }
+        .s1 { margin: 10px; }
+        .s2 , #b { height: 30px; }
+        .s3 , td { padding: 10px } 
+        .s5 { margin: 1px; } 
+        .s6 { background-color: blue; } 
+        .s7 { width: 100%; } 
+        .s8 { background-color:lightsteelblue; } 
+        .s9 { background-color: white; } 
+        .s10 { display:inline-flex; } 
+        .s11 { width: 10%; } 
+        .s12 { width: 40%; } 
+        .s13 , #b { width: 360px; } 
+        .s14 { width: 1%; } 
+        .s15 { width: 240px; } 
+        .s16 { height: 100px; width: 100px; }
+    </style>
+</head>
+<body>
+    <div class="s10 s7 s6">
+        <div class="s s11"></div>
+        <div class="s s1 s2">Company</div>
+        <div class="s s1">
+            <form class="s10" id="form1" action="/account" method="post">
+                <input class="s2 s13" id="search" type="search" name="search" placeholder="search the products">
+                <button class="s2" type="submit" name="submit">search</button>
+            </form> 
+        </div>
+        <div class="s s14"></div>
+        <div class="username">
+            <button class="s2" type="button" id="username" name="username" form="form1"> <%= name %> </button>
+            <div class="div2">
+                <a class="link" href="/savedproducts">Saved Products</a>
+                <a class="link" href="/orders">Orders</a>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="s10">
+        <div>
+        <div style="display: inline-block; background-color: blue; width: 360px; height: 360px; margin: 10px;">
+        
+        </div>
+        <div class="s1">
+        <form action="/<%= l.product %>/<%= (l._id).toString() %>" method="post">
+            <button id="b" type="submit" value=<%= r %> name="submit"><%= r %></button>
+        </form> 
+        </div>
+        </div>
+        <div id="div1" style="display: inline-block; margin: 10px;">
+            <table border="1px">
+                <tr>
+                    <td>Product:</td>
+                    <td><%= l.product %></td>
+                </tr>
+                <tr>
+                    <td>Cost:</td>
+                    <td><%= l.cost %></td>
+                </tr>
+                <tr>
+                    <td>Company:</td>
+                    <td><%= l.company %></td>
+                </tr>
+                <tr>
+                    <td>Manufacturedate:</td>
+                    <td><%= l.manufacturedate %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>
+
+
+
+

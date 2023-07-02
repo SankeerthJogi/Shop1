@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Account</title>
+    <style>
+        a
+        {
+            text-decoration: none;
+        }
+        .link
+        {
+            display: block;
+            padding: 10px;
+        }
+        .link:hover
+        {
+            background-color: whitesmoke;
+        }
+        .username
+        {
+            display: inline-block;
+            margin: 10px;
+        }
+        .div2
+        { 
+            background-color: white;
+            display: none;
+            position: absolute;
+        }
+        .username:hover .div2
+        {
+            display: block;
+        }
+        .s { display: inline-block; }
+        .s1 { margin: 10px; }
+        .s2 { height: 30px; }
+        .s3 { padding: 10px } 
+        .s5 { margin: 1px; } 
+        .s6 { background-color: blue; } 
+        .s7 { width: 100%; } 
+        .s8 { background-color:lightsteelblue; } 
+        .s9 { background-color: white; } 
+        .s10 { display:inline-flex; } 
+        .s11 { width: 10%; } 
+        .s12 { width: 40%; } 
+        .s13 { width: 360px; } 
+        .s14 { width: 1%; } 
+        .s15 { width: 240px; } 
+        .s16 { height: 100px; width: 100px; }
+    </style>
+</head>
+<body>
+    <div class="s10 s7 s6">
+        <div class="s s11"></div>
+        <div class="s s1 s2">Company</div>
+        <div class="s s1">
+            <form class="s10" id="form1" action="/account" method="post">
+                <input class="s2 s13" id="search" type="search" name="search" placeholder="search the products">
+                <button class="s2" type="submit" name="submit">search</button>
+            </form> 
+        </div>
+        <div class="s s14"></div>
+        <div class="username">
+            <button class="s2" type="button" id="username" name="username" form="form1"> 
+                <% if(name == "account") { %>
+                    <a href="/login">Account</a>
+                <% } else {  %>
+                    <div><%= name %></div> 
+                <% } %>
+            </button>
+            <div class="div2">
+                <a class="link" href="/savedproducts">Saved Products</a>
+                <a class="link" href="/orders">Orders</a>
+            </div>
+        </div>
+    </div>
+    <div class="div2"><a href="/savedproducts">Saved Products</a></div>
+    
+    <div id="div1">
+        <% var i,l2=l.length; %>
+        <% for(i=0;i<l2;i++) { %>
+            <div class="s8">
+                <div class="s1 s10">
+                    <div class="s s5 s3 s9">
+                        <a href="/<%= l[i][0].product %>">
+                            <div style="height: 100px; width: 200px;" class="s6"></div>
+                            <div><%= l[i][0].product %></div>
+                            <div>View all</div>
+                        </a>
+                    </div>
+                    <div class="s10">
+                    <% var j,l1=l[i].length; %>
+                    <% for(j=0;j<l1;j++) { %>
+                        
+                        <div class="s s5 s3 s9">
+                            <a href="/<%= l[i][j].product %>/<%= (l[i][j]._id).toString() %>" target="_blank">
+                                <div class="s6 s16"></div>
+                                <div><%= l[i][j].product %></div>
+                                <div>Rs.<%= l[i][j].cost %></div>
+                            </a>
+                        </div>
+                        
+                    <% } %>
+                    </div>
+                    <% if(l1==0) { %>
+                        <div><%= bool1 %> not found</div>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+    </div>
+<script>
+                    
+</script>
+</body>
+</html>
+            
+            
+            
+            
