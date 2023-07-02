@@ -16,18 +16,18 @@ const accountSchema=new mongoose.Schema({product: String,cost: Number,company: S
 const Account = mongoose.model("Account", accountSchema);
 const typeSchema=new mongoose.Schema({type: String, productid: Array});
 const Type = mongoose.model("Type", typeSchema);
-var username="";
+var username="account";
 var password="";
 var bool1="";
 var dir="";
 var i=0,l=0;
 var a="",b="",c={},c1=[],c2="";
-app.get("/", function(req, res)
+app.get("/login", function(req, res)
 {
     res.render("login", {e: ""});
 });
 
-app.post("/",async function(req, res)
+app.post("/login",async function(req, res)
 {
     username=req.body.username;
     password=req.body.password;
@@ -40,7 +40,7 @@ app.post("/",async function(req, res)
     }
     else
     {
-        res.redirect("/account");
+        res.redirect("/");
     }    
 });
 
@@ -201,7 +201,7 @@ app.post("/:l/:c", async function(req, res){
 
 
 
-app.get("/start", async function(req, res)
+app.get("/", async function(req, res)
 {
     var l1 = await Type.find({});
     var len=l1.length;
@@ -232,12 +232,23 @@ app.get("/logindemo", async function(req, res)
 
 app.post("/logindemo", async function(req, res)
 {
-
+  var json1={s: "Login Page Demo",s1: "Login Page Demo1"};
   console.log(req.body);
-  res.json("Login Page Demo");
+  res.json(json1);
+});
+
+app.get("/loginreact", async function(req, res)
+{
+  res.sendFile(__dirname + "/views/loginreact.html");
 });
 
 
+app.get("/:l", async function(req, res)
+{
+  var l = await Account.find({product: req.params.l}).exec();
+  res.render("account",{name: username, l: l, bool1: req.params.l, a: "", b: "",c2: "" });
+
+});
 app.listen(3000, function()
 {
   console.log("Server started on port 3000");
